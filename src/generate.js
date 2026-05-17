@@ -14,7 +14,12 @@ async function fetchNews() {
 
   for (const feed of feeds) {
     try {
-      const data = await parser.parseURL(feed);
+      const data = await Promise.race([
+      parser.parseURL(feed),
+      new Promise((_, reject) =>
+        setTimeout(() => reject(new Error("Timeout")), 10000)
+        )
+      ]);
 
       const items = data.items.slice(0, 5).map(item => ({
         title: item.title,
