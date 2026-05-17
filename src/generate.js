@@ -4,9 +4,9 @@ import Parser from "rss-parser";
 const parser = new Parser();
 
 const feeds = [
-  "https://www.calcalist.co.il/GeneralRSS/0,16335,L-8,00.xml",
-  "https://www.themarker.com/cmlink/1.628",
-  "https://feeds.reuters.com/reuters/businessNews"
+  "https://rss.nytimes.com/services/xml/rss/nyt/Business.xml",
+  "https://feeds.bbci.co.uk/news/business/rss.xml",
+  "https://www.cnbc.com/id/10001147/device/rss/rss.html"
 ];
 
 async function fetchNews() {
