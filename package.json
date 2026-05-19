@@ -6,6 +6,7 @@
     "generate": "node src/generate.js"
   },
   "dependencies": {
+    "@google/generative-ai": "^0.24.1",
     "rss-parser": "^3.13.0"
   }
 }
