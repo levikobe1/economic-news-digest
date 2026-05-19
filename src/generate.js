@@ -139,7 +139,7 @@ async function analyzeWithGemini(articles) {
   const genAI = new GoogleGenerativeAI(apiKey);
 
   const model = genAI.getGenerativeModel({
-    model: "models/gemini-2.5-flash"
+    model: "models/gemini-2.0-flash"
   });
 
   const prompt = `
