@@ -37,7 +37,7 @@ async function analyzeWithGemini(articles) {
 
   const genAI = new GoogleGenerativeAI(apiKey);
   const model = genAI.getGenerativeModel({
-    model: "gemini-1.5-flash"
+    model: "models/gemini-2.5-flash"
   });
 
   const prompt = `
