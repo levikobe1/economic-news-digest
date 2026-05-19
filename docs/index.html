@@ -13,31 +13,33 @@
       padding: 40px;
     }
     .container {
-      max-width: 900px;
+      max-width: 980px;
       margin: auto;
     }
     header {
       background: #111827;
       color: white;
-      padding: 24px;
-      border-radius: 16px;
-      margin-bottom: 20px;
+      padding: 28px;
+      border-radius: 18px;
+      margin-bottom: 24px;
     }
     .card {
       background: white;
-      padding: 20px;
-      border-radius: 14px;
-      margin-bottom: 16px;
+      padding: 24px;
+      border-radius: 16px;
+      margin-bottom: 20px;
       border: 1px solid #e5e7eb;
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
     }
-    .source {
-      color: #2563eb;
-      font-weight: bold;
-      margin-bottom: 8px;
-    }
-    a {
-      color: #1d4ed8;
-      font-weight: bold;
+    h1 { margin: 0 0 10px; }
+    h2 { margin-top: 0; font-size: 23px; }
+    h3 { margin-bottom: 6px; color: #374151; }
+    p { line-height: 1.7; }
+    a { color: #1d4ed8; font-weight: bold; }
+    .links {
+      margin-top: 18px;
+      font-size: 14px;
+      color: #374151;
     }
   </style>
 </head>
@@ -45,45 +47,65 @@
   <main class="container">
     <header>
       <h1>סקירת חדשות כלכליות יומית</h1>
-      <p>גרסת בדיקה ראשונה — ללא RSS, כדי לוודא שהפרסום עובד.</p>
-      <p>עודכן: 19.5.2026, 20:06:11</p>
+      <p>סיכום AI אוטומטי על בסיס מקורות RSS כלכליים.</p>
+      <p>עודכן: 19.5.2026, 20:35:13</p>
     </header>
     
-    <article class="card">
-      <div class="source">New York Times</div>
-      <h2>Son of Mango Fashion Chain’s Founder Is Arrested as Suspect in His Death</h2>
-      <p>Tue, 19 May 2026 16:55:00 +0000</p>
-      <a href="https://www.nytimes.com/2026/05/19/world/europe/mango-son-arrest-andic.html" target="_blank">קישור למקור</a>
-    </article>
-  
-    <article class="card">
-      <div class="source">New York Times</div>
-      <h2>Inflation Fears Cloud G7 Economic Agenda as Iran War Persists</h2>
-      <p>Tue, 19 May 2026 16:29:09 +0000</p>
-      <a href="https://www.nytimes.com/2026/05/19/business/inflation-g7-economic-agenda-iran-war.html" target="_blank">קישור למקור</a>
-    </article>
-  
-    <article class="card">
-      <div class="source">New York Times</div>
-      <h2>Rising Energy Costs and Data Centers at Heart of NextEra’s Dominion Bid</h2>
-      <p>Tue, 19 May 2026 15:13:37 +0000</p>
-      <a href="https://www.nytimes.com/2026/05/19/business/energy-environment/nextera-dominion-electricity-rates-data-centers.html" target="_blank">קישור למקור</a>
-    </article>
-  
-    <article class="card">
-      <div class="source">New York Times</div>
-      <h2>Amazon E-Bikes Take Root in Manhattan and Brooklyn</h2>
-      <p>Tue, 19 May 2026 14:47:52 +0000</p>
-      <a href="https://www.nytimes.com/2026/05/19/business/amazon-cargo-bikes-delivery.html" target="_blank">קישור למקור</a>
-    </article>
-  
-    <article class="card">
-      <div class="source">New York Times</div>
-      <h2>China Wants A.I. to Flourish, but Not at the Expense of Jobs</h2>
-      <p>Tue, 19 May 2026 14:45:02 +0000</p>
-      <a href="https://www.nytimes.com/2026/05/19/business/china-ai-unemployment.html" target="_blank">קישור למקור</a>
-    </article>
-  
+      <article class="card">
+        <h2>חששות אינפלציה וסדר יום כלכלי של ה-G7 בצל מלחמת איראן</h2>
+        <h3>תמצית האירוע</h3>
+        <p>חששות גוברים מפני אינפלציה מאפילים על סדר היום הכלכלי של מדינות ה-G7. המתח בין ארה&quot;ב לאירופה בנוגע להקלת סנקציות נפט על רוסיה, בצל מלחמת איראן המתמשכת, מעיד על חילוקי דעות משמעותיים המשפיעים על יציבות המחירים העולמית.</p>
+        <h3>משמעות גלובלית</h3>
+        <p>עלול להוביל לחוסר תיאום במדיניות הכלכלית הגלובלית, להחמיר את לחצי האינפלציה ולהגביר את התנודתיות בשוקי הסחורות, במיוחד בתחום האנרגיה.</p>
+        <h3>משמעות אפשרית לישראל</h3>
+        <p>עלול להשפיע על מחירי האנרגיה והסחורות בישראל, ולהגביר את האינפלציה המקומית. חוסר יציבות גלובלי יכול להשפיע גם על שער החליפין ועל מצב הייצוא.</p>
+        <div class="links">מקורות: <a href="https://www.nytimes.com/2026/05/19/business/inflation-g7-economic-agenda-iran-war.html" target="_blank" rel="noopener noreferrer">New York Times</a></div>
+      </article>
+    
+      <article class="card">
+        <h2>עליות מחירי אנרגיה וביקושי דאטה סנטרים במרכז עסקת NextEra-Dominion</h2>
+        <h3>תמצית האירוע</h3>
+        <p>עלויות האנרגיה הגוברות ודרישת החשמל ההולכת וגדלה מצד מרכזי נתונים (דאטה סנטרים) נמצאות בלב הצעת הרכישה של NextEra לחברת Dominion Energy. מגמות אלו מדגישות את הלחץ על תשתיות החשמל ואת השפעתן על כיס הצרכן.</p>
+        <h3>משמעות גלובלית</h3>
+        <p>מחירי חשמל עולים עלולים להשפיע על עלויות תפעול עסקיות ותעשייתיות ברחבי העולם, במיוחד בענפי הטכנולוגיה עתירי האנרגיה. הגידול בדרישת החשמל מדאטה סנטרים מצריך השקעות ענק בתשתיות.</p>
+        <h3>משמעות אפשרית לישראל</h3>
+        <p>על בסיס המידע הזמין, עליות במחירי האנרגיה בעולם יכולות להשפיע על עלויות החשמל בישראל. ביקושים גוברים לאנרגיה מדאטה סנטרים הפועלים או מתוכננים בישראל עלולים להפעיל לחץ דומה על רשת החשמל המקומית.</p>
+        <div class="links">מקורות: <a href="https://www.nytimes.com/2026/05/19/business/energy-environment/nextera-dominion-electricity-rates-data-centers.html" target="_blank" rel="noopener noreferrer">New York Times</a></div>
+      </article>
+    
+      <article class="card">
+        <h2>סין שואפת לפריחת בינה מלאכותית, אך לא על חשבון משרות עבודה</h2>
+        <h3>תמצית האירוע</h3>
+        <p>סדרת פסקי דין תקדימיים בסין מעידה על כך שבתי המשפט שם מגויסים כדי להגן על עובדים מפני פיטורים עקב הטמעת בינה מלאכותית. הדבר משקף גישה ממשלתית הרוצה לקדם AI אך חוששת מהשלכותיה על שוק התעסוקה.</p>
+        <h3>משמעות גלובלית</h3>
+        <p>מדיניות זו בסין יכולה להוות מודל או תמרור אזהרה למדינות אחרות המתמודדות עם השפעת ה-AI על תעסוקה. היא מעלה שאלות לגבי תפקיד הממשלה בוויסות טכנולוגיה ובהגנה על עובדים.</p>
+        <h3>משמעות אפשרית לישראל</h3>
+        <p>על בסיס המידע הזמין, מדיניות דומה להגנה על עובדים מפני הדחת AI יכולה לעלות גם בישראל, בהתחשב בדיון הציבורי הגובר על השפעת AI על שוק העבודה המקומי.</p>
+        <div class="links">מקורות: <a href="https://www.nytimes.com/2026/05/19/business/china-ai-unemployment.html" target="_blank" rel="noopener noreferrer">New York Times</a></div>
+      </article>
+    
+      <article class="card">
+        <h2>אופניים חשמליים של אמזון משתלבים במשלוחי מנהטן וברוקלין</h2>
+        <h3>תמצית האירוע</h3>
+        <p>חברות קטנות המטפלות במשלוחים הסופיים בניו יורק מסתמכות על אופניים חשמליים כדי לעקוף את עומסי התנועה בעיר. אמזון מתכננת ליישם את השימוש באופניים אלו במקומות נוספים, מה שמעיד על מגמה מתרחבת בפתרונות &quot;מייל אחרון&quot; לוגיסטיים.</p>
+        <h3>משמעות גלובלית</h3>
+        <p>פתרונות מסירה עירוניים חדשניים כמו אופניים חשמליים יכולים לשנות את פני הלוגיסטיקה העירונית הגלובלית, להפחית עומסי תנועה וזיהום, ולשפר את יעילות המשלוחים בערים צפופות.</p>
+        <h3>משמעות אפשרית לישראל</h3>
+        <p>על בסיס המידע הזמין, ערים גדולות וצפופות בישראל, כמו תל אביב וירושלים, יכולות לאמץ פתרונות דומים כדי להתמודד עם אתגרי משלוחים ופקקים. פוטנציאל לחיסכון בעלויות והתייעלות לחברות שליחויות מקומיות.</p>
+        <div class="links">מקורות: <a href="https://www.nytimes.com/2026/05/19/business/amazon-cargo-bikes-delivery.html" target="_blank" rel="noopener noreferrer">New York Times</a></div>
+      </article>
+    
+      <article class="card">
+        <h2>משאית ה-Semi של טסלה עשויה לטלטל את תעשיית ההובלה</h2>
+        <h3>תמצית האירוע</h3>
+        <p>נהגי משאיות בקליפורניה מגלים עניין רב במשאית ה-Semi החשמלית של טסלה, מכיוון שהיא זולה משמעותית לתפעול ויכולה לנסוע רחוק יותר בטעינה אחת בהשוואה למשאיות חשמליות של יצרנים ותיקים. זה מסמן שינוי פוטנציאלי בתעשיית ההובלה.</p>
+        <h3>משמעות גלובלית</h3>
+        <p>כניסת משאיות חשמליות ארוכות טווח ויעילות כמו ה-Tesla Semi יכולה לחולל מהפכה בתעשיית ההובלה הגלובלית, להפחית את התלות בדלקים פוסיליים, להוריד עלויות תפעול ולהפחית פליטות.</p>
+        <h3>משמעות אפשרית לישראל</h3>
+        <p>על בסיס המידע הזמין, אימוץ משאיות חשמליות בישראל יכול לסייע בהפחתת עלויות התובלה, תלוי במחירי החשמל והתשתיות הטעינה הזמינות. כמו כן, ישנה פוטנציאל להפחתת זיהום אוויר במדינה.</p>
+        <div class="links">מקורות: <a href="https://www.nytimes.com/2026/05/19/business/energy-environment/teslas-semi-truck.html" target="_blank" rel="noopener noreferrer">New York Times</a></div>
+      </article>
+    
   </main>
 </body>
 </html>
