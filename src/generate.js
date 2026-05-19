@@ -41,7 +41,7 @@ const feeds = [
   {
     name: "Calcalist via Google News",
     url: "https://news.google.com/rss/search?q=site%3Acalcalist.co.il%20%D7%9B%D7%9C%D7%9B%D7%9C%D7%94&hl=he&gl=IL&ceid=IL%3Ahe"
-  }
+  },
   {
   name: "TheMarker via Google News",
   url: "https://news.google.com/rss/search?q=site%3Athemarker.com%20%D7%9B%D7%9C%D7%9B%D7%9C%D7%94&hl=he&gl=IL&ceid=IL%3Ahe"
