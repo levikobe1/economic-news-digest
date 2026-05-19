@@ -13,7 +13,7 @@
       padding: 40px;
     }
     .container {
-      max-width: 980px;
+      max-width: 1040px;
       margin: auto;
     }
     header {
@@ -23,7 +23,14 @@
       border-radius: 18px;
       margin-bottom: 24px;
     }
-    .card {
+    h1 {
+      margin: 0 0 10px 0;
+    }
+    .subtitle {
+      color: #d1d5db;
+      line-height: 1.7;
+    }
+    .card, .status {
       background: white;
       padding: 24px;
       border-radius: 16px;
@@ -31,15 +38,50 @@
       border: 1px solid #e5e7eb;
       box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
     }
-    h1 { margin: 0 0 10px; }
-    h2 { margin-top: 0; font-size: 23px; }
-    h3 { margin-bottom: 6px; color: #374151; }
-    p { line-height: 1.7; }
-    a { color: #1d4ed8; font-weight: bold; }
+    .meta {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 12px;
+    }
+    .meta span {
+      background: #eff6ff;
+      color: #1d4ed8;
+      padding: 5px 10px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: bold;
+    }
+    h2 {
+      margin-top: 0;
+      font-size: 23px;
+      line-height: 1.45;
+    }
+    h3 {
+      margin-bottom: 6px;
+      color: #374151;
+    }
+    p {
+      line-height: 1.7;
+    }
+    a {
+      color: #1d4ed8;
+      font-weight: bold;
+    }
     .links {
       margin-top: 18px;
       font-size: 14px;
       color: #374151;
+    }
+    .status {
+      font-size: 14px;
+      color: #374151;
+    }
+    .status h2 {
+      font-size: 18px;
+    }
+    .status ul {
+      margin-bottom: 0;
     }
   </style>
 </head>
@@ -47,65 +89,133 @@
   <main class="container">
     <header>
       <h1>סקירת חדשות כלכליות יומית</h1>
-      <p>סיכום AI אוטומטי על בסיס מקורות RSS כלכליים.</p>
-      <p>עודכן: 19.5.2026, 20:35:13</p>
+      <p class="subtitle">
+        סיכום AI אוטומטי של 5-7 אירועים כלכליים מרכזיים מתוך מקורות RSS כלכליים.
+        הסיכום מבוסס על כותרות ותקצירי RSS, ולכן אינו מחליף קריאה מלאה של הכתבות המקוריות.
+      </p>
+      <p>עודכן: 19.5.2026, 20:44:27</p>
     </header>
+
     
       <article class="card">
-        <h2>חששות אינפלציה וסדר יום כלכלי של ה-G7 בצל מלחמת איראן</h2>
+        <div class="meta">
+          <span>ריבית / אינפלציה / שווקים</span>
+          <span>חשיבות: גבוהה</span>
+        </div>
+        <h2>חשש גובר מאינפלציה גלובלית והעלאות ריבית, תשואות האג&quot;ח מזנקות</h2>
+
         <h3>תמצית האירוע</h3>
-        <p>חששות גוברים מפני אינפלציה מאפילים על סדר היום הכלכלי של מדינות ה-G7. המתח בין ארה&quot;ב לאירופה בנוגע להקלת סנקציות נפט על רוסיה, בצל מלחמת איראן המתמשכת, מעיד על חילוקי דעות משמעותיים המשפיעים על יציבות המחירים העולמית.</p>
+        <p>חששות מאינפלציה מתמשכת, בעיקר בשל מלחמת איראן ועלויות האנרגיה, הובילו לעליית תשואות האג&quot;ח הממשלתיות בארה&quot;ב לרמות הגבוהות ביותר מאז המשבר הפיננסי (תשואת אג&quot;ח ל-30 שנה מעל 5.19%). שיעורי המשכנתאות זינקו לרמה הגבוהה ביותר מאז יולי אשתקד. כלכלנים מעריכים שהפדרל ריזרב יימנע מקיצוצי ריבית השנה. שווקי המניות הגיבו בירידות כאשר תשואות האג&quot;ח ממשיכות לעלות, והנושא מעיב על סדר היום הכלכלי של ה-G7.</p>
+
         <h3>משמעות גלובלית</h3>
-        <p>עלול להוביל לחוסר תיאום במדיניות הכלכלית הגלובלית, להחמיר את לחצי האינפלציה ולהגביר את התנודתיות בשוקי הסחורות, במיוחד בתחום האנרגיה.</p>
+        <p>המשך לחץ כלפי מעלה על עלויות האשראי הגלובליות, האטה פוטנציאלית בצמיחה הכלכלית העולמית עקב מדיניות מוניטרית הדוקה יותר, ואי-ודאות בשווקים. עלייה בעלות המימון לממשלות וחברות ברחבי העולם.</p>
+
         <h3>משמעות אפשרית לישראל</h3>
-        <p>עלול להשפיע על מחירי האנרגיה והסחורות בישראל, ולהגביר את האינפלציה המקומית. חוסר יציבות גלובלי יכול להשפיע גם על שער החליפין ועל מצב הייצוא.</p>
-        <div class="links">מקורות: <a href="https://www.nytimes.com/2026/05/19/business/inflation-g7-economic-agenda-iran-war.html" target="_blank" rel="noopener noreferrer">New York Times</a></div>
+        <p>עלייה בעלות החוב של ממשלת ישראל, אפשרות לעליית ריבית המשכנתאות בישראל אם בנק ישראל יתיישר עם המגמות הגלובליות. ירידות בשווקים העולמיים עלולות להשפיע לרעה על מניות הטכנולוגיה הישראליות ועל מצב הרוח הכלכלי הכללי.</p>
+
+        <div class="links">מקורות: <a href="https://www.nytimes.com/2026/05/19/business/inflation-g7-economic-agenda-iran-war.html" target="_blank" rel="noopener noreferrer">NYTimes Business</a> | <a href="https://www.cnbc.com/2026/05/19/treasurys-yields-inflation-traders-fed-interest-rates.html" target="_blank" rel="noopener noreferrer">CNBC</a> | <a href="https://www.cnbc.com/2026/05/19/mortgage-rates-closing-in-on-7percent.html" target="_blank" rel="noopener noreferrer">CNBC</a> | <a href="https://www.investors.com/market-trend/stock-market-today/dow-jones-sp500-nasdaq-micron-sandisk-home-depot-google-io/?src=A00220&amp;yptr=yahoo" target="_blank" rel="noopener noreferrer">Yahoo Finance</a> | <a href="https://news.google.com/rss/articles/CBMiwAFBVV95cUxNQXRLSlB4YU9Fb3h0QkhNQUtJVlg4Q01vQWdZNUJSNlNHcnhWdE0xZFA0anUyQ1EtRmN6cW55bWpkM1dGTmpNVjRkSG5tekhKS1pURW5XcGdYaXJGemI3bzZyc0wyRGRjc0stLUJKTkFIM3c4eXlHS1l4TTVuemtQX1JKbTNRWHB4NzI0VW1WOUg2bk1pTWViRmkxWUZLazhvNk9BZHdQMEtrUmZJNHJpM0tPaFVEOGcwdk1PMzZzQ2s?oc=5" target="_blank" rel="noopener noreferrer">Reuters via Google News</a> | <a href="https://news.google.com/rss/articles/CBMif0FVX3lxTE90dmMxNVk4WV9zNGh3bkF3NWZOdkpDb1hjMTlVWVhHWUNFeVpiNDY1U2p6MmE3VE5lSXA5M25pUHVPRVcxWFJKdkd0X3pmM3ZEUlprUHZ1a1kxS0lKYjl4T2syN1lBblo5bHJhSGczeUtrRjhwTEVURFh5UDVIX00?oc=5" target="_blank" rel="noopener noreferrer">Reuters via Google News</a> | <a href="https://news.google.com/rss/articles/CBMikAFBVV95cUxQOUhKUHJDSGF3VEdSMGVrQ093WTMySXE3YTJFRVA4OWtXalJOS0dNRnhYSVFNbXZYdjh6R2ZXNDRobjN4N0ZrbGtGM0tvSkhvNWR6eG9qYWlaNlh5cWgyNXNiVVRsV0Rha2pXU0R6MjRIUGJBc1JmcEx1NXVPaC1BdWphMWx4Zk5mTHdzMnVWekI?oc=5" target="_blank" rel="noopener noreferrer">Reuters via Google News</a> | <a href="https://www.globes.co.il/news/article.aspx?did=1001543361#utm_source=RSS" target="_blank" rel="noopener noreferrer">Globes</a></div>
       </article>
     
       <article class="card">
-        <h2>עליות מחירי אנרגיה וביקושי דאטה סנטרים במרכז עסקת NextEra-Dominion</h2>
+        <div class="meta">
+          <span>אנרגיה / סחר גלובלי / אינפלציה</span>
+          <span>חשיבות: גבוהה</span>
+        </div>
+        <h2>השלכות כלכליות ופיננסיות של מלחמת איראן ממשיכות להעיב על השוק</h2>
+
         <h3>תמצית האירוע</h3>
-        <p>עלויות האנרגיה הגוברות ודרישת החשמל ההולכת וגדלה מצד מרכזי נתונים (דאטה סנטרים) נמצאות בלב הצעת הרכישה של NextEra לחברת Dominion Energy. מגמות אלו מדגישות את הלחץ על תשתיות החשמל ואת השפעתן על כיס הצרכן.</p>
+        <p>מלחמת איראן ממשיכה להוות גורם מכריע באי-הוודאות הכלכלית הגלובלית. מחירי הדלק הגיעו לשיא מאז תחילת המלחמה, ושיבושים במיצרי הורמוז מאלצים נתיבי שיט ארוכים יותר לנפט גולמי, מה שמעלה את עלויות התובלה. ניתוח חדש מעריך כי המלחמה עלתה לחברות ציבוריות ברחבי העולם כ-25 מיליארד דולר. נשיא ארה&quot;ב טראמפ דחה תקיפה אפשרית באיראן, מה שהוביל לירידה קלה במחירי הנפט. ארה&quot;ב קוראת למדינות ה-G7 לסייע בתקיפת הפיננסים של איראן.</p>
+
         <h3>משמעות גלובלית</h3>
-        <p>מחירי חשמל עולים עלולים להשפיע על עלויות תפעול עסקיות ותעשייתיות ברחבי העולם, במיוחד בענפי הטכנולוגיה עתירי האנרגיה. הגידול בדרישת החשמל מדאטה סנטרים מצריך השקעות ענק בתשתיות.</p>
+        <p>תנודתיות מתמשכת במחירי האנרגיה ועלויות סחר גלובליות גבוהות יותר, הגברת הלחצים האינפלציוניים. סיכונים גיאופוליטיים מתורגמים ישירות להפסדים פיננסיים ניכרים עבור חברות עולמיות.</p>
+
         <h3>משמעות אפשרית לישראל</h3>
-        <p>על בסיס המידע הזמין, עליות במחירי האנרגיה בעולם יכולות להשפיע על עלויות החשמל בישראל. ביקושים גוברים לאנרגיה מדאטה סנטרים הפועלים או מתוכננים בישראל עלולים להפעיל לחץ דומה על רשת החשמל המקומית.</p>
-        <div class="links">מקורות: <a href="https://www.nytimes.com/2026/05/19/business/energy-environment/nextera-dominion-electricity-rates-data-centers.html" target="_blank" rel="noopener noreferrer">New York Times</a></div>
+        <p>סיכון גיאופוליטי ישיר ומיידי לישראל, פוטנציאל לעלייה נוספת במחירי האנרגיה (דלק, חשמל) ובעלויות היבוא. המצב מחייב הגדלת תקציבי ביטחון ומעלה את אי-הוודאות הכלכלית המקומית.</p>
+
+        <div class="links">מקורות: <a href="https://www.nytimes.com/2026/05/19/business/inflation-g7-economic-agenda-iran-war.html" target="_blank" rel="noopener noreferrer">NYTimes Business</a> | <a href="https://www.bbc.com/news/articles/cdep64555wzo?at_medium=RSS&amp;at_campaign=rss" target="_blank" rel="noopener noreferrer">BBC Business</a> | <a href="https://www.cnbc.com/2026/05/19/trump-says-its-not-a-war-insurers-with-money-on-the-line-say-it-is.html" target="_blank" rel="noopener noreferrer">CNBC</a> | <a href="https://www.cnbc.com/2026/05/19/trump-iran-war-strike-postponed.html" target="_blank" rel="noopener noreferrer">CNBC</a> | <a href="https://www.cnbc.com/2026/05/19/bessent-g7-iran-finance-terrorism.html" target="_blank" rel="noopener noreferrer">CNBC</a> | <a href="https://www.marketwatch.com/story/home-depots-stock-rises-as-the-full-year-outlook-was-kept-intact-a-relief-for-worried-investors-75cdfb7c?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">MarketWatch</a> | <a href="https://www.marketwatch.com/story/crude-oil-is-going-the-long-way-around-the-world-as-countries-scramble-to-plug-hormuz-supply-hole-af065aaf?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">MarketWatch</a> | <a href="https://www.globes.co.il/news/article.aspx?did=1001543361#utm_source=RSS" target="_blank" rel="noopener noreferrer">Globes</a> | <a href="https://www.globes.co.il/news/article.aspx?did=1001543277#utm_source=RSS" target="_blank" rel="noopener noreferrer">Globes</a></div>
       </article>
     
       <article class="card">
-        <h2>סין שואפת לפריחת בינה מלאכותית, אך לא על חשבון משרות עבודה</h2>
+        <div class="meta">
+          <span>טכנולוגיה / רגולציה / אנרגיה</span>
+          <span>חשיבות: גבוהה</span>
+        </div>
+        <h2>ביקוש לאנרגיה ורגולציה חדשה סביב התפתחות ה-AI</h2>
+
         <h3>תמצית האירוע</h3>
-        <p>סדרת פסקי דין תקדימיים בסין מעידה על כך שבתי המשפט שם מגויסים כדי להגן על עובדים מפני פיטורים עקב הטמעת בינה מלאכותית. הדבר משקף גישה ממשלתית הרוצה לקדם AI אך חוששת מהשלכותיה על שוק התעסוקה.</p>
+        <p>סין נוקטת בצעדים רגולטוריים פורצי דרך כדי להגן על עובדים מפני עקירה על ידי בינה מלאכותית, תוך איזון בין צמיחת AI לביטחון תעסוקתי. חברות טכנולוגיה עולמיות כמו גוגל ובלקסטון מקימות מיזמי ענן AI כדי לעמוד בביקוש ההולך וגובר למרכזי נתונים, שדורשים צריכת חשמל משמעותית. בנוסף, חלה תזוזת כישרונות בולטת בתחום ה-AI, עם הצטרפות מייסד-שותף של OpenAI לשעבר לחברת Anthropic, וגוגל הציגה שדרוגי AI חדשים בכנס I/O.</p>
+
         <h3>משמעות גלובלית</h3>
-        <p>מדיניות זו בסין יכולה להוות מודל או תמרור אזהרה למדינות אחרות המתמודדות עם השפעת ה-AI על תעסוקה. היא מעלה שאלות לגבי תפקיד הממשלה בוויסות טכנולוגיה ובהגנה על עובדים.</p>
+        <p>קידמה טכנולוגית מהירה ב-AI, אך עם אתגרי רגולציה חדשים ופוטנציאל לשיבוש שוק העבודה. עלייה משמעותית בביקוש לאנרגיה ועלויות חשמל גבוהות יותר עקב דרישת מרכזי הנתונים.</p>
+
         <h3>משמעות אפשרית לישראל</h3>
-        <p>על בסיס המידע הזמין, מדיניות דומה להגנה על עובדים מפני הדחת AI יכולה לעלות גם בישראל, בהתחשב בדיון הציבורי הגובר על השפעת AI על שוק העבודה המקומי.</p>
-        <div class="links">מקורות: <a href="https://www.nytimes.com/2026/05/19/business/china-ai-unemployment.html" target="_blank" rel="noopener noreferrer">New York Times</a></div>
+        <p>סקטור הטכנולוגיה הישראלי, ובמיוחד סטארטאפי ה-AI, מושפע ישירות ממגמות אלו בהשקעות, גיוס טאלנטים והזדמנויות עסקיות. שינויים רגולטוריים בסין ובכלל עשויים להשפיע על המדיניות הישראלית בעתיד. העלייה בביקוש לאנרגיה גלובלית עשויה להשפיע בעקיפין על מחירי האנרגיה בישראל.</p>
+
+        <div class="links">מקורות: <a href="https://www.nytimes.com/2026/05/19/business/energy-environment/nextera-dominion-electricity-rates-data-centers.html" target="_blank" rel="noopener noreferrer">NYTimes Business</a> | <a href="https://www.nytimes.com/2026/05/19/business/china-ai-unemployment.html" target="_blank" rel="noopener noreferrer">NYTimes Business</a> | <a href="https://www.cnbc.com/2026/05/19/anthropic-hires-openai-cofounder-andrej-karpathy-former-tesla-ai-lead.html" target="_blank" rel="noopener noreferrer">CNBC</a> | <a href="https://finance.yahoo.com/sectors/technology/articles/google-expected-court-coders-consumers-164626843.html" target="_blank" rel="noopener noreferrer">Yahoo Finance</a> | <a href="https://news.google.com/rss/articles/CBMipAFBVV95cUxQS3BSTU96Y2NQdlNRMTdlYlJkOU5TYVU0bWdvM1NiRVdabzhGNlppWjRXWGwzdnFHaFlJUzh5QVVpcnZRZl9GMDR5Tkg3VVNoS19vUlB1X2VXWTdwdWtjLVp1dHpRQ0EwLTlsT2RkWHdlVEZyRHBFcTUxYk12X0xFcXpLNWtUbWpMNEtaNlFxb0JPdlhldTNMZ2NhR09qSkliNF9jUw?oc=5" target="_blank" rel="noopener noreferrer">Reuters via Google News</a></div>
       </article>
     
       <article class="card">
-        <h2>אופניים חשמליים של אמזון משתלבים במשלוחי מנהטן וברוקלין</h2>
+        <div class="meta">
+          <span>שווקים / אינפלציה / רגולציה</span>
+          <span>חשיבות: בינונית</span>
+        </div>
+        <h2>חולשה כלכלית בבריטניה: עליית אבטלה וקריאה למגבלות מחיר</h2>
+
         <h3>תמצית האירוע</h3>
-        <p>חברות קטנות המטפלות במשלוחים הסופיים בניו יורק מסתמכות על אופניים חשמליים כדי לעקוף את עומסי התנועה בעיר. אמזון מתכננת ליישם את השימוש באופניים אלו במקומות נוספים, מה שמעיד על מגמה מתרחבת בפתרונות &quot;מייל אחרון&quot; לוגיסטיים.</p>
+        <p>כלכלת בריטניה מציגה סימני חולשה, כאשר שיעור האבטלה עלה באופן בלתי צפוי ומספר המשרות הפנויות צנח לשפל של חמש שנים, בין היתר כתוצאה מהשפעות ראשוניות של מלחמת איראן. הממשלה בבריטניה קוראת לסופרמרקטים להגביל מרצונם את מחירי מוצרי מזון חיוניים כדי להקל על יוקר המחיה. פרויקט התשתית HS2 סובל מחריגות תקציב אדירות (עד 102.7 מיליארד ליש&quot;ט) וצפי ליעילות מופחתת מהמתוכנן.</p>
+
         <h3>משמעות גלובלית</h3>
-        <p>פתרונות מסירה עירוניים חדשניים כמו אופניים חשמליים יכולים לשנות את פני הלוגיסטיקה העירונית הגלובלית, להפחית עומסי תנועה וזיהום, ולשפר את יעילות המשלוחים בערים צפופות.</p>
+        <p>אינדיקטורים לחולשה כלכלית באחת ממדינות ה-G7, מה שעלול להעיד על מגמות רחבות יותר בכלכלות המפותחות. התערבות ממשלתית במחירי מזון עשויה לשמש תקדים או לעורר דיון במדינות אחרות המתמודדות עם אינפלציה.</p>
+
         <h3>משמעות אפשרית לישראל</h3>
-        <p>על בסיס המידע הזמין, ערים גדולות וצפופות בישראל, כמו תל אביב וירושלים, יכולות לאמץ פתרונות דומים כדי להתמודד עם אתגרי משלוחים ופקקים. פוטנציאל לחיסכון בעלויות והתייעלות לחברות שליחויות מקומיות.</p>
-        <div class="links">מקורות: <a href="https://www.nytimes.com/2026/05/19/business/amazon-cargo-bikes-delivery.html" target="_blank" rel="noopener noreferrer">New York Times</a></div>
+        <p>כשותפת סחר, חולשה כלכלית בבריטניה עלולה להשפיע במידה קלה על הייצוא הישראלי. האתגרים הקשורים להשפעות מלחמה, יוקר מחיה ופרויקטי תשתית גדולים בבריטניה יכולים להציע שיעורים או הקבלות רלוונטיות לישראל.</p>
+
+        <div class="links">מקורות: <a href="https://www.bbc.com/news/articles/c5y7qz806q3o?at_medium=RSS&amp;at_campaign=rss" target="_blank" rel="noopener noreferrer">BBC Business</a> | <a href="https://www.bbc.com/news/articles/c794xw7p2dqo?at_medium=RSS&amp;at_campaign=rss" target="_blank" rel="noopener noreferrer">BBC Business</a> | <a href="https://www.bbc.com/news/articles/czx2plkvg45o?at_medium=RSS&amp;at_campaign=rss" target="_blank" rel="noopener noreferrer">BBC Business</a></div>
       </article>
     
       <article class="card">
-        <h2>משאית ה-Semi של טסלה עשויה לטלטל את תעשיית ההובלה</h2>
+        <div class="meta">
+          <span>ריבית / רגולציה / שווקים</span>
+          <span>חשיבות: גבוהה</span>
+        </div>
+        <h2>שינוי בעמדת טראמפ כלפי הפדרל ריזרב והריבית בארה&quot;ב</h2>
+
         <h3>תמצית האירוע</h3>
-        <p>נהגי משאיות בקליפורניה מגלים עניין רב במשאית ה-Semi החשמלית של טסלה, מכיוון שהיא זולה משמעותית לתפעול ויכולה לנסוע רחוק יותר בטעינה אחת בהשוואה למשאיות חשמליות של יצרנים ותיקים. זה מסמן שינוי פוטנציאלי בתעשיית ההובלה.</p>
+        <p>נשיא ארה&quot;ב טראמפ שינה את עמדתו כלפי הפדרל ריזרב, ורמז כי יאפשר ליו&quot;ר הפד המיועד, קווין וורש, אוטונומיה רבה יותר בנוגע להחלטות ריבית. זאת לאחר תקופה ממושכת בה הפעיל לחץ חסר תקדים על הבנק המרכזי.</p>
+
         <h3>משמעות גלובלית</h3>
-        <p>כניסת משאיות חשמליות ארוכות טווח ויעילות כמו ה-Tesla Semi יכולה לחולל מהפכה בתעשיית ההובלה הגלובלית, להפחית את התלות בדלקים פוסיליים, להוריד עלויות תפעול ולהפחית פליטות.</p>
+        <p>הפחתת אי-הוודאות הפוליטית סביב מדיניות הפד העתידית, שעשויה לאפשר לבנק המרכזי לפעול באופן עצמאי ויעיל יותר במאבק באינפלציה ובשמירה על יציבות כלכלית. החלטות הפד משפיעות באופן ניכר על זרימת ההון העולמית ועל שיעורי הריבית ברחבי העולם.</p>
+
         <h3>משמעות אפשרית לישראל</h3>
-        <p>על בסיס המידע הזמין, אימוץ משאיות חשמליות בישראל יכול לסייע בהפחתת עלויות התובלה, תלוי במחירי החשמל והתשתיות הטעינה הזמינות. כמו כן, ישנה פוטנציאל להפחתת זיהום אוויר במדינה.</p>
-        <div class="links">מקורות: <a href="https://www.nytimes.com/2026/05/19/business/energy-environment/teslas-semi-truck.html" target="_blank" rel="noopener noreferrer">New York Times</a></div>
+        <p>מדיניות הפד משפיעה ישירות על שערי הדולר-שקל, על תשואות האג&quot;ח בישראל ועל תנועות ההון הנכנסות והיוצאות מישראל. פד עצמאי יותר עשוי להוביל למדיניות מוניטרית יציבה וצפויה יותר, מה שמיטיב עם יציבות השוק גם בישראל.</p>
+
+        <div class="links">מקורות: <a href="https://www.marketwatch.com/story/trump-says-hell-let-warsh-do-what-he-wants-to-do-with-interest-rates-its-a-remark-that-fed-watchers-have-been-bracing-for-2b014504?mod=mw_rss_topstories" target="_blank" rel="noopener noreferrer">MarketWatch</a></div>
       </article>
     
+      <article class="card">
+        <div class="meta">
+          <span>ישראל / טכנולוגיה / אחר</span>
+          <span>חשיבות: גבוהה</span>
+        </div>
+        <h2>חדשנות טכנולוגית ישראלית בתחום הביטחון</h2>
+
+        <h3>תמצית האירוע</h3>
+        <p>חברת רפאל הישראלית השיקה מערכת הגנה היקפית (360 מעלות) לרחפנים בשם &#039;סטורם שילד&#039; (Storm Shield). בנוסף, נודע כי פאלמר לאקי, מנכ&quot;ל חברת הביטחון האמריקאית הענקית אנדוריל (שגייסה לאחרונה 5 מיליארד דולר), ניסה לרכוש את החברה הישראלית קלע, אך נתקל בסירוב. עובדות אלו מדגישות את החיוניות והחדשנות של התעשייה הביטחונית בישראל.</p>
+
+        <h3>משמעות גלובלית</h3>
+        <p>חיזוק החדשנות בטכנולוגיות הגנה, במיוחד בתחום לוחמת הרחפנים, המהווה דאגה גלובלית גוברת. עניין מצד ענקיות הגנה אמריקאיות בחברות ישראליות מדגיש את המעמד האסטרטגי ואת הערך של הקניין הרוחני הישראלי בתחום זה.</p>
+
+        <h3>משמעות אפשרית לישראל</h3>
+        <p>ממצבת את ישראל כמובילה עולמית בפיתוח טכנולוגיות ביטחוניות מתקדמות, מגבירה את פוטנציאל הייצוא הביטחוני ומושכת השקעות נוספות לתחום. הדרישה לטכנולוגיות ישראליות מהווה קטליזטור לצמיחה כלכלית ולשמירת יתרון טכנולוגי ביטחוני.</p>
+
+        <div class="links">מקורות: <a href="https://www.globes.co.il/news/article.aspx?did=1001543482#utm_source=RSS" target="_blank" rel="noopener noreferrer">Globes</a> | <a href="https://www.globes.co.il/news/article.aspx?did=1001543447#utm_source=RSS" target="_blank" rel="noopener noreferrer">Globes</a></div>
+      </article>
+    
+
+    <section class="status">
+      <h2>סטטוס מקורות</h2>
+      <ul><li>NYTimes Business: עבד — 8 כתבות</li><li>BBC Business: עבד — 8 כתבות</li><li>CNBC: עבד — 8 כתבות</li><li>MarketWatch: עבד — 8 כתבות</li><li>Yahoo Finance: עבד — 8 כתבות</li><li>Reuters via Google News: עבד — 8 כתבות</li><li>Globes: עבד — 8 כתבות</li><li>Calcalist: נכשל — Status code 404</li></ul>
+    </section>
   </main>
 </body>
 </html>
