@@ -29,6 +29,8 @@ jobs:
 
       - name: Generate HTML
         run: npm run generate
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
 
       - name: Commit generated HTML
         run: |
