@@ -1,19 +1,39 @@
 import fs from "fs";
 
-const articles = [
-  {
-    title: "בדיקת מערכת — כותרת כלכלית לדוגמה",
-    source: "System Test",
-    link: "https://www.themarker.com/misc/rss",
-    pubDate: new Date().toISOString()
-  },
-  {
-    title: "המערכת הצליחה לייצר עמוד HTML דרך GitHub Actions",
-    source: "GitHub Actions",
-    link: "https://github.com",
-    pubDate: new Date().toISOString()
+import Parser from "rss-parser";
+
+const parser = new Parser();
+
+async function getArticles() {
+  try {
+
+    const feed = await parser.parseURL(
+      "https://rss.nytimes.com/services/xml/rss/nyt/Business.xml"
+    );
+
+    return feed.items.slice(0, 5).map(item => ({
+      title: item.title,
+      source: "New York Times",
+      link: item.link,
+      pubDate: item.pubDate || ""
+    }));
+
+  } catch (error) {
+
+    console.log(error);
+
+    return [
+      {
+        title: "נכשלה טעינת חדשות RSS",
+        source: "System",
+        link: "#",
+        pubDate: new Date().toISOString()
+      }
+    ];
   }
-];
+}
+
+const articles = await getArticles();
 
 function escapeHTML(value = "") {
   return String(value)
