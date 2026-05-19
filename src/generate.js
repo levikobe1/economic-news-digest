@@ -39,9 +39,13 @@ const feeds = [
     url: "https://www.globes.co.il/webservice/rss/rssfeeder.asmx/FeederNode?iID=1225"
   },
   {
-    name: "Calcalist",
-    url: "https://www.calcalist.co.il/GeneralRSS/0,16335,L-8,00.xml"
+    name: "Calcalist via Google News",
+    url: "https://news.google.com/rss/search?q=site%3Acalcalist.co.il%20%D7%9B%D7%9C%D7%9B%D7%9C%D7%94&hl=he&gl=IL&ceid=IL%3Ahe"
   }
+  {
+  name: "TheMarker via Google News",
+  url: "https://news.google.com/rss/search?q=site%3Athemarker.com%20%D7%9B%D7%9C%D7%9B%D7%9C%D7%94&hl=he&gl=IL&ceid=IL%3Ahe"
+  }  
 ];
 
 function escapeHTML(value = "") {
