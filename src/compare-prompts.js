@@ -32,24 +32,16 @@ function escapeHTML(value = "") {
 
 function isWithinLast24Hours(pubDate) {
   if (!pubDate) return false;
-
   const published = new Date(pubDate);
-
-  if (Number.isNaN(published.getTime())) {
-    return false;
-  }
-
+  if (Number.isNaN(published.getTime())) return false;
   const ageMs = Date.now() - published.getTime();
-
   return ageMs >= 0 && ageMs <= 24 * 60 * 60 * 1000;
 }
 
 async function parseFeedWithTimeout(feed, timeoutMs = 10000) {
   return Promise.race([
     parser.parseURL(feed.url),
-    new Promise((_, reject) =>
-      setTimeout(() => reject(new Error("Timeout")), timeoutMs)
-    )
+    new Promise((_, reject) => setTimeout(() => reject(new Error("Timeout")), timeoutMs))
   ]);
 }
 
@@ -60,7 +52,6 @@ async function getArticles() {
   for (const feed of feeds) {
     try {
       console.log(`Fetching feed: ${feed.name}`);
-
       const parsed = await parseFeedWithTimeout(feed);
 
       const items = parsed.items
@@ -76,47 +67,52 @@ async function getArticles() {
         }));
 
       allArticles.push(...items);
-
-      feedStatus.push({
-        name: feed.name,
-        status: "success",
-        count: items.length
-      });
-
+      feedStatus.push({ name: feed.name, status: "success", count: items.length });
       console.log(`Success: ${feed.name} - ${items.length} items`);
     } catch (error) {
-      feedStatus.push({
-        name: feed.name,
-        status: "failed",
-        error: error.message
-      });
-
+      feedStatus.push({ name: feed.name, status: "failed", error: error.message });
       console.log(`Failed: ${feed.name} - ${error.message}`);
     }
   }
 
   return {
-    articles: allArticles.map((article, index) => ({
-      ...article,
-      id: index + 1
-    })),
+    articles: allArticles.map((article, index) => ({ ...article, id: index + 1 })),
     feedStatus
   };
 }
 
-async function analyzeWithGemini(articles) {
-  const apiKey = process.env.GEMINI_API_KEY;
+function parseGeminiJson(rawText, label) {
+  console.log(`RAW GEMINI RESPONSE - ${label}:`);
+  console.log(rawText);
 
-  if (!apiKey) {
-    throw new Error("Missing GEMINI_API_KEY");
+  const cleaned = rawText
+    .replace(/```json/g, "")
+    .replace(/```/g, "")
+    .trim();
+
+  const jsonStart = cleaned.indexOf("[");
+  const jsonEnd = cleaned.lastIndexOf("]");
+
+  if (jsonStart === -1 || jsonEnd === -1 || jsonEnd <= jsonStart) {
+    throw new Error(`Gemini did not return a valid JSON array for ${label}`);
   }
 
+  const jsonText = cleaned.slice(jsonStart, jsonEnd + 1);
+  return JSON.parse(jsonText);
+}
+
+async function runGeminiPrompt(articles, prompt, label) {
+  const apiKey = process.env.GEMINI_API_KEY;
+  if (!apiKey) throw new Error("Missing GEMINI_API_KEY");
+
   const genAI = new GoogleGenerativeAI(apiKey);
+  const model = genAI.getGenerativeModel({ model: "models/gemini-2.5-flash" });
 
-  const model = genAI.getGenerativeModel({
-    model: "models/gemini-2.5-flash"
-  });
+  const result = await model.generateContent(prompt);
+  return parseGeminiJson(result.response.text(), label);
+}
 
+async function analyzeWithGeminiOriginal(articles) {
   const prompt = `
 אתה עורך חדשות כלכליות בכיר עבור קוראים בישראל.
 
@@ -148,42 +144,10 @@ async function analyzeWithGemini(articles) {
 ${JSON.stringify(articles, null, 2)}
 `;
 
-  const result = await model.generateContent(prompt);
-
-  const rawText = result.response.text();
-
-console.log("RAW GEMINI RESPONSE:");
-console.log(rawText);
-
-const cleaned = rawText
-  .replace(/```json/g, "")
-  .replace(/```/g, "")
-  .trim();
-
-const jsonStart = cleaned.indexOf("[");
-const jsonEnd = cleaned.lastIndexOf("]");
-
-if (jsonStart === -1 || jsonEnd === -1) {
-  throw new Error("Gemini did not return valid JSON array");
+  return runGeminiPrompt(articles, prompt, "original prompt");
 }
 
-const jsonText = cleaned.slice(jsonStart, jsonEnd + 1);
-
-return JSON.parse(jsonText);
-
 async function analyzeWithGeminiStrict(articles) {
-  const apiKey = process.env.GEMINI_API_KEY;
-
-  if (!apiKey) {
-    throw new Error("Missing GEMINI_API_KEY");
-  }
-
-  const genAI = new GoogleGenerativeAI(apiKey);
-
-  const model = genAI.getGenerativeModel({
-    model: "models/gemini-2.5-flash"
-  });
-
   const prompt = `
 אתה עורך חדשות כלכליות בכיר עבור קוראים בישראל.
 
@@ -221,34 +185,12 @@ async function analyzeWithGeminiStrict(articles) {
 ${JSON.stringify(articles, null, 2)}
 `;
 
-  const result = await model.generateContent(prompt);
-
-  const rawText = result.response.text();
-
-console.log("RAW GEMINI RESPONSE:");
-console.log(rawText);
-
-const cleaned = rawText
-  .replace(/```json/g, "")
-  .replace(/```/g, "")
-  .trim();
-
-const jsonStart = cleaned.indexOf("[");
-const jsonEnd = cleaned.lastIndexOf("]");
-
-if (jsonStart === -1 || jsonEnd === -1) {
-  throw new Error("Gemini did not return valid JSON array");
+  return runGeminiPrompt(articles, prompt, "strict prompt");
 }
 
-const jsonText = cleaned.slice(jsonStart, jsonEnd + 1);
-
-return JSON.parse(jsonText);
 function isLocalItem(item, sourceArticles) {
   const category = String(item.category || "").toLowerCase();
-
-  const sources = sourceArticles
-    .map((a) => a.source.toLowerCase())
-    .join(" ");
+  const sources = sourceArticles.map((article) => article.source.toLowerCase()).join(" ");
 
   return (
     category.includes("ישראל") ||
@@ -260,20 +202,16 @@ function isLocalItem(item, sourceArticles) {
 
 function buildCard(item, articles) {
   const sourceArticles = (item.sourceIds || [])
-    .map((id) => articles.find((a) => a.id === id))
+    .map((id) => articles.find((article) => article.id === id))
     .filter(Boolean);
 
   const mainArticle = sourceArticles[0];
-
   const title = mainArticle
     ? `<a class="title-link" href="${escapeHTML(mainArticle.link)}" target="_blank" rel="noopener noreferrer">${escapeHTML(item.title)}</a>`
     : escapeHTML(item.title);
 
   const links = sourceArticles
-    .map(
-      (article) =>
-        `<a href="${escapeHTML(article.link)}" target="_blank" rel="noopener noreferrer">${escapeHTML(article.source)}</a>`
-    )
+    .map((article) => `<a href="${escapeHTML(article.link)}" target="_blank" rel="noopener noreferrer">${escapeHTML(article.source)}</a>`)
     .join(" | ");
 
   return `
@@ -301,16 +239,13 @@ function buildCard(item, articles) {
 }
 
 function generateHTML(digest, articles, feedStatus, pageLabel) {
-  const now = new Date().toLocaleString("he-IL", {
-    timeZone: "Asia/Jerusalem"
-  });
-
+  const now = new Date().toLocaleString("he-IL", { timeZone: "Asia/Jerusalem" });
   const globalCards = [];
   const localCards = [];
 
   for (const item of digest) {
     const sourceArticles = (item.sourceIds || [])
-      .map((id) => articles.find((a) => a.id === id))
+      .map((id) => articles.find((article) => article.id === id))
       .filter(Boolean);
 
     if (isLocalItem(item, sourceArticles)) {
@@ -322,11 +257,7 @@ function generateHTML(digest, articles, feedStatus, pageLabel) {
 
   const statusRows = feedStatus
     .map((feed) => {
-      const label =
-        feed.status === "success"
-          ? `עבד — ${feed.count} כתבות`
-          : `נכשל — ${feed.error}`;
-
+      const label = feed.status === "success" ? `עבד — ${feed.count} כתבות` : `נכשל — ${feed.error}`;
       return `<li>${escapeHTML(feed.name)}: ${escapeHTML(label)}</li>`;
     })
     .join("");
@@ -344,7 +275,6 @@ function generateHTML(digest, articles, feedStatus, pageLabel) {
       --blue-soft: #eff6ff;
       --red: #ef4444;
       --red-soft: #fef2f2;
-      --green: #059669;
       --green-soft: #ecfdf5;
       --teal: #0f766e;
       --bg: #f4f6f8;
@@ -354,9 +284,7 @@ function generateHTML(digest, articles, feedStatus, pageLabel) {
       --card: #ffffff;
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     body {
       margin: 0;
@@ -389,8 +317,8 @@ function generateHTML(digest, articles, feedStatus, pageLabel) {
     .test-label {
       display: inline-block;
       margin-top: 16px;
-      background: rgba(255,255,255,0.12);
-      border: 1px solid rgba(255,255,255,0.22);
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.22);
       color: white;
       padding: 8px 14px;
       border-radius: 999px;
@@ -584,26 +512,11 @@ function generateHTML(digest, articles, feedStatus, pageLabel) {
     }
 
     @media (max-width: 700px) {
-      .top-hero h1 {
-        font-size: 28px;
-      }
-
-      main {
-        padding: 24px 14px 44px;
-      }
-
-      .news-card {
-        padding: 20px;
-      }
-
-      .news-card h2 {
-        font-size: 20px;
-      }
-
-      .system-inner {
-        display: block;
-        line-height: 1.9;
-      }
+      .top-hero h1 { font-size: 28px; }
+      main { padding: 24px 14px 44px; }
+      .news-card { padding: 20px; }
+      .news-card h2 { font-size: 20px; }
+      .system-inner { display: block; line-height: 1.9; }
     }
   </style>
 </head>
@@ -649,7 +562,7 @@ async function main() {
   }
 
   console.log("Running original prompt...");
-  const originalDigest = await analyzeWithGemini(articles);
+  const originalDigest = await analyzeWithGeminiOriginal(articles);
 
   console.log("Running strict prompt...");
   const strictDigest = await analyzeWithGeminiStrict(articles);
