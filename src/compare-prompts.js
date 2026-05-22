@@ -150,13 +150,26 @@ ${JSON.stringify(articles, null, 2)}
 
   const result = await model.generateContent(prompt);
 
-  const cleaned = result.response.text()
-    .replace(/```json/g, "")
-    .replace(/```/g, "")
-    .trim();
+  const rawText = result.response.text();
 
-  return JSON.parse(cleaned);
+console.log("RAW GEMINI RESPONSE:");
+console.log(rawText);
+
+const cleaned = rawText
+  .replace(/```json/g, "")
+  .replace(/```/g, "")
+  .trim();
+
+const jsonStart = cleaned.indexOf("[");
+const jsonEnd = cleaned.lastIndexOf("]");
+
+if (jsonStart === -1 || jsonEnd === -1) {
+  throw new Error("Gemini did not return valid JSON array");
 }
+
+const jsonText = cleaned.slice(jsonStart, jsonEnd + 1);
+
+return JSON.parse(jsonText);
 
 async function analyzeWithGeminiStrict(articles) {
   const apiKey = process.env.GEMINI_API_KEY;
@@ -210,14 +223,26 @@ ${JSON.stringify(articles, null, 2)}
 
   const result = await model.generateContent(prompt);
 
-  const cleaned = result.response.text()
-    .replace(/```json/g, "")
-    .replace(/```/g, "")
-    .trim();
+  const rawText = result.response.text();
 
-  return JSON.parse(cleaned);
+console.log("RAW GEMINI RESPONSE:");
+console.log(rawText);
+
+const cleaned = rawText
+  .replace(/```json/g, "")
+  .replace(/```/g, "")
+  .trim();
+
+const jsonStart = cleaned.indexOf("[");
+const jsonEnd = cleaned.lastIndexOf("]");
+
+if (jsonStart === -1 || jsonEnd === -1) {
+  throw new Error("Gemini did not return valid JSON array");
 }
 
+const jsonText = cleaned.slice(jsonStart, jsonEnd + 1);
+
+return JSON.parse(jsonText);
 function isLocalItem(item, sourceArticles) {
   const category = String(item.category || "").toLowerCase();
 
