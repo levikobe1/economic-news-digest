@@ -2,7 +2,7 @@ name: Daily Economic News Digest
 
 on:
   schedule:
-    - cron: "0 5 * * *"
+    - cron: "41 6 * * *"
   workflow_dispatch:
 
 permissions:
